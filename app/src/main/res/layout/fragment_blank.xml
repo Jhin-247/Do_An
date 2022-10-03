@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/reem_kufiink_regular"
+            android:text="@string/permission_needed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_request_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_blank"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_button_login"
+            android:fontFamily="@font/reem_kufiink_regular"
+            android:padding="3dp"
+            android:text="@string/give_permission"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</layout>

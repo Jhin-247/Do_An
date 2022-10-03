@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="username">Email</string>
+    <string name="unregister_account">Bạn chưa có tài khoản?</string>
+    <string name="password">Mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="missing_username">Điền thông tin email</string>
+    <string name="missing_password">Điền thông tin mật khẩu</string>
+
+    <string name="sign_up_error_invalid_email">Email không đúng định dạng</string>
+    <string name="log_in_eror_unexpected">Đang có lỗi vui lòng thử lại sau</string>
+    <string name="register">Đăng ký</string>
+    <string name="name">Tên</string>
+    <string name="last_name">Họ và tên đệm</string>
+    <string name="dob">Ngày sinh</string>
+    <string name="_00">00</string>
+    <string name="_2000">2000</string>
+    <string name="_source">/</string>
+    <string name="gender">Giới tính:</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+
+    <string name="create_pattern">Create new pattern</string>
+    <string name="redraw_pattern">Redraw pattern</string>
+    <string name="draw_to_open">Draw pattern to open app</string>
+    <string name="wrong_pattern">Pattern does not match.\nRedraw</string>
+    <string name="short_pattern">Pattern too short.\nAt least 3 dots</string>
+    <string name="recommend_lock">Recommend to Lock</string>
+
+    <string name="input_to_search">Input to search</string>
+    <string name="all_apps">All apps</string>
+    <string name="limited">Limited</string>
+    <string name="locked">Locked</string>
+    <string name="permission_needed">Bạn cần cấp quyền cho ứng dụng để có thể hoạt động</string>
+    <string name="give_permission">Cấp quyền</string>
+
+
+</resources>

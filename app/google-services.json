@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "889584984887",
+    "project_id": "focus-10f14",
+    "storage_bucket": "focus-10f14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889584984887:android:a203d3bd6fe49ea69870b2",
+        "android_client_info": {
+          "package_name": "com.b18dccn562.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889584984887-uqe1r372fei69d1gsq5fgaqe8eobeacp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHH2f37H6fS7tXRNb-1C4BKFV8vgxM9Ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889584984887-uqe1r372fei69d1gsq5fgaqe8eobeacp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

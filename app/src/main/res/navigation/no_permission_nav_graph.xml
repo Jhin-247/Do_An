@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/no_permission_nav_graph"
+    app:startDestination="@id/blankFragment">
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.blank.BlankFragment"
+        android:label="BlankFragment" />
+    <fragment
+        android:id="@+id/settingFragment2"
+        android:name="com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.SettingFragment"
+        android:label="SettingFragment" />
+</navigation>

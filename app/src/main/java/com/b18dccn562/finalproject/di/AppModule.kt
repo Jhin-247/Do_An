@@ -1,10 +1,10 @@
 package com.b18dccn562.finalproject.di
 
-import com.b18dccn562.finalproject.data.remote.login.LoginApi
+import com.b18dccn562.finalproject.data.remote.firebase.FirebaseApi
 import com.b18dccn562.finalproject.data.repository.AppRepositoryImpl
-import com.b18dccn562.finalproject.data.repository.LoginRepositoryImpl
+import com.b18dccn562.finalproject.data.repository.FirebaseRepositoryImpl
 import com.b18dccn562.finalproject.domain.repository.AppRepository
-import com.b18dccn562.finalproject.domain.repository.LoginRepository
+import com.b18dccn562.finalproject.domain.repository.FirebaseRepository
 import com.b18dccn562.finalproject.utils.AppUtils
 import dagger.Module
 import dagger.Provides
@@ -19,14 +19,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(api: LoginApi): LoginRepository {
-        return LoginRepositoryImpl(api)
+    fun provideLoginRepository(api: FirebaseApi): FirebaseRepository {
+        return FirebaseRepositoryImpl(api)
     }
 
     @Provides
     @Singleton
-    fun provideLoginApi(): LoginApi {
-        return LoginApi()
+    fun provideLoginApi(): FirebaseApi {
+        return FirebaseApi()
     }
 
     @Provides

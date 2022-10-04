@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.b18dccn562.finalproject.common.Resource
-import com.b18dccn562.finalproject.domain.repository.LoginRepository
+import com.b18dccn562.finalproject.domain.repository.FirebaseRepository
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 
     private val _loginState = MutableLiveData<Resource<AuthResult>>()
@@ -23,8 +23,8 @@ class LoginViewModel @Inject constructor(
 
     private val loginCompleteListener = OnCompleteListener {
         if (it.isSuccessful) {
-            CoroutineScope(Dispatchers.IO).launch {
-                _loginState.postValue(Resource.Success(it.result))
+            CoroutineScope(Dispatchers.Main).launch {
+                _loginState.value = Resource.Success(it.result)
             }
         } else {
             try {
@@ -42,7 +42,7 @@ class LoginViewModel @Inject constructor(
     fun signUp(email: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                loginRepository.signUp(email, password, loginCompleteListener)
+                firebaseRepository.signUp(email, password, loginCompleteListener)
             } catch (exception: Exception) {
                 handelFirebaseException(exception)
             }
@@ -51,7 +51,7 @@ class LoginViewModel @Inject constructor(
 
     fun signIn(email: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            loginRepository.signIn(email, password, loginCompleteListener)
+            firebaseRepository.signIn(email, password, loginCompleteListener)
         }
     }
 

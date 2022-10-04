@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class SettingAdapter @Inject constructor() : BaseAdapter<SettingItems, ItemSettingBinding>() {
 
-    var settingFunctionHandle: SettingFunctionHandle? = null
+    var settingFunctionHandle: SettingFunctionsImplement? = null
 
 
     override fun getViewHolder(

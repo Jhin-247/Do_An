@@ -42,6 +42,7 @@
     <string name="log_out">Đăng xuất</string>
 
     <string name="setting">Cài đặt</string>
+    <string name="unmatch_password">Mật khẩu không khớp</string>
 
 
 </resources>

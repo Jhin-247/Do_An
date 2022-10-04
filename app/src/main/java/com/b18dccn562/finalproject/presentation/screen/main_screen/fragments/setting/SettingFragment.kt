@@ -7,7 +7,7 @@ import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.databinding.FragmentSettingBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingAdapter
-import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionHandle
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionsImplement
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctions
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingItems
 import com.google.firebase.auth.ktx.auth
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionHandle {
+class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionsImplement {
 
     @Inject
     lateinit var settingAdapter: SettingAdapter
@@ -70,7 +70,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionH
             SettingFunctions.LOG_OUT -> {
                 Firebase.auth.signOut()
                 Firebase.auth.addAuthStateListener {
-                    if (Firebase.auth.currentUser == null) {
+                    if (it.currentUser == null) {
                         val intent = Intent(context, LogInActivity::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

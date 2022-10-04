@@ -1,9 +1,11 @@
 package com.b18dccn562.finalproject.presentation.screen.login_screen.fragments.sign_in
 
 import android.content.Intent
+import androidx.fragment.app.activityViewModels
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.databinding.FragmentSignInBinding
+import com.b18dccn562.finalproject.presentation.screen.login_screen.fragments.LoginViewModel
 import com.b18dccn562.finalproject.presentation.screen.main_screen.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -11,6 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignInFragment : BaseFragment<FragmentSignInBinding>() {
+
+    private val mLoginViewModel by activityViewModels<LoginViewModel>()
+
     override fun getLayoutId(): Int = R.layout.fragment_sign_in
 
     override fun initData() {
@@ -30,7 +35,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
     override fun initListener() {
         mBinding.btnSignIn.setOnClickListener {
             if (checkFields()) {
-                Firebase.auth.signInWithEmailAndPassword(
+                mLoginViewModel.signIn(
                     mBinding.etUsername.text.toString(),
                     mBinding.etPassword.text.toString()
                 )

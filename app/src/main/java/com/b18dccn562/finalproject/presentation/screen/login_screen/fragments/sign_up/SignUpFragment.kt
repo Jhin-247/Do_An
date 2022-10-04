@@ -38,13 +38,18 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
         mBinding.btnSignUp.setOnClickListener {
             val username = mBinding.etUsername.text
             val password = mBinding.etPassword.text
+            val rePassword = mBinding.etRePassword.text
             if (username == null || username.isEmpty()) {
                 Toast
                     .makeText(context, getString(R.string.missing_username), Toast.LENGTH_SHORT)
                     .show()
-            } else if (password == null || password.isEmpty()) {
+            } else if (password == null || password.isEmpty() || rePassword == null || rePassword.isEmpty()) {
                 Toast
                     .makeText(context, getString(R.string.missing_password), Toast.LENGTH_SHORT)
+                    .show()
+            } else if (password != rePassword) {
+                Toast
+                    .makeText(context, getString(R.string.unmatch_password), Toast.LENGTH_SHORT)
                     .show()
             } else {
                 mSignUpViewModel.signUp(username.toString(), password.toString())

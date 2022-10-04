@@ -193,7 +193,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="10dp"
                         android:fontFamily="@font/reem_kufiink_regular"
-                        android:text="@string/gender" />
+                        android:text="@string/gender"
+                        android:textColor="#99000000" />
 
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -205,17 +206,19 @@
                             android:id="@+id/rb_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/black"
+                            android:buttonTint="#99000000"
                             android:checked="true"
                             android:fontFamily="@font/reem_kufiink_regular"
-                            android:text="@string/male" />
+                            android:text="@string/male"
+                            android:textColor="#99000000" />
 
                         <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/rb_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/black"
-                            android:text="@string/female" />
+                            android:buttonTint="#99000000"
+                            android:text="@string/female"
+                            android:textColor="#99000000" />
 
                     </RadioGroup>
 

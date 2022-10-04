@@ -25,7 +25,7 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.screen.login_screen.LogInActivity"
+            android:name=".presentation.screen.lock_screen.LockActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
         </activity>
         <activity android:name="com.b18dccn562.finalproject.presentation.screen.main_screen.MainActivity" />
         <activity android:name="com.b18dccn562.finalproject.presentation.screen.sign_up_info_screen.SignUpInformationActivity" />
-        <activity android:name="com.b18dccn562.finalproject.presentation.screen.lock_screen.LockActivity" />
+        <activity android:name="com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity" />
     </application>
 
 </manifest>

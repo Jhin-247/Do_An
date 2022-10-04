@@ -49,7 +49,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
             } else {
                 mSignUpViewModel.signUp(username.toString(), password.toString())
                 keyBoardUtils.hideKeyBoard(mBinding.btnSignUp)
-                mActivityCallback.showLoadingDialogFromFragment()
+                showLoadingDialog(false)
             }
         }
     }
@@ -74,7 +74,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
                     activity?.finish()
                 }
             }
-            mActivityCallback.hideLoadingDialogFromFragment()
+            hideLoadingDialog()
         }
     }
 }

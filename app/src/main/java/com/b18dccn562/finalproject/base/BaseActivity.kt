@@ -109,14 +109,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), Activit
         requestUsageStatPermission()
     }
 
-    override fun showLoadingDialogFromFragment() {
-        showLoadingDialog(true)
-    }
-
-    override fun hideLoadingDialogFromFragment() {
-        hideLoadingDialog()
-    }
-
     override fun startActivityFromFragment(intent: Intent) {
         startActivity(intent)
     }

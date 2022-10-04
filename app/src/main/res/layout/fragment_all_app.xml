@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_search_text_view"
             android:drawableStart="@drawable/ic_search"
+            android:fontFamily="@font/reem_kufiink_regular"
             android:gravity="center_vertical"
             android:hint="@string/input_to_search"
             android:maxLines="1"

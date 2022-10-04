@@ -9,16 +9,11 @@ import com.b18dccn562.finalproject.MyApplication
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseActivity
 import com.b18dccn562.finalproject.databinding.ActivityMainBinding
-import com.b18dccn562.finalproject.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val mViewModel by viewModels<MainViewModel>()
-
-    @Inject
-    lateinit var appUtils: AppUtils
 
     private lateinit var mNavHostFragment: NavHostFragment
     private var mNavController: NavController? = null
@@ -46,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initYourView() {
         hideSupportActionBar()
-//        setStatusBarColor(R.color.status_bar_main_activity_color)
+        setStatusBarColor(R.color.main_color)
     }
 
     private fun setupNavigation() {
@@ -87,12 +82,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     override fun setupListener() {
-
     }
 
     override fun onResume() {
         super.onResume()
-        if (!mViewModel.getInitializedState()) {
+        if (mViewModel.isInitializedData.equals(InitializeState.INITIALIZED)) {
             if (checkUsageStatPermission()) {
                 mViewModel.setHasPermissionStatus(true)
             }

@@ -8,6 +8,7 @@
     <string name="forgot_password">Quên mật khẩu</string>
     <string name="missing_username">Điền thông tin email</string>
     <string name="missing_password">Điền thông tin mật khẩu</string>
+    <string name="rewrite_password">Nhập lại mật khẩu</string>
 
     <string name="sign_up_error_invalid_email">Email không đúng định dạng</string>
     <string name="log_in_eror_unexpected">Đang có lỗi vui lòng thử lại sau</string>
@@ -35,6 +36,12 @@
     <string name="locked">Locked</string>
     <string name="permission_needed">Bạn cần cấp quyền cho ứng dụng để có thể hoạt động</string>
     <string name="give_permission">Cấp quyền</string>
+
+    <string name="account">Tài khoản</string>
+    <string name="lock_setting">Khóa</string>
+    <string name="log_out">Đăng xuất</string>
+
+    <string name="setting">Cài đặt</string>
 
 
 </resources>

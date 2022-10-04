@@ -1,14 +1,15 @@
 package com.b18dccn562.finalproject.di
 
 import com.b18dccn562.finalproject.data.remote.login.LoginApi
-import com.b18dccn562.finalproject.data.repository.LoginRepositoryIml
+import com.b18dccn562.finalproject.data.repository.AppRepositoryImpl
+import com.b18dccn562.finalproject.data.repository.LoginRepositoryImpl
+import com.b18dccn562.finalproject.domain.repository.AppRepository
 import com.b18dccn562.finalproject.domain.repository.LoginRepository
+import com.b18dccn562.finalproject.utils.AppUtils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 
@@ -18,20 +19,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideExecutors(): Executor {
-        return Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
-    }
-
-    @Provides
-    @Singleton
     fun provideLoginRepository(api: LoginApi): LoginRepository {
-        return LoginRepositoryIml(api)
+        return LoginRepositoryImpl(api)
     }
 
     @Provides
     @Singleton
-    fun provideLoginApi(): LoginApi{
+    fun provideLoginApi(): LoginApi {
         return LoginApi()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppRepository(appUtils: AppUtils): AppRepository {
+        return AppRepositoryImpl(appUtils)
     }
 
 }

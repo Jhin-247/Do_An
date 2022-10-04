@@ -7,7 +7,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import javax.inject.Inject
 
-class LoginRepositoryIml @Inject constructor(
+class LoginRepositoryImpl @Inject constructor(
     private val loginApi: LoginApi
 ) : LoginRepository {
 

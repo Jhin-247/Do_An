@@ -31,10 +31,25 @@
             android:background="@drawable/bg_login_edittext"
             android:fontFamily="@font/reem_kufiink_regular"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="17sp"
             app:layout_constraintTop_toBottomOf="@id/et_username" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_re_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_login_edittext"
+            android:fontFamily="@font/reem_kufiink_regular"
+            android:hint="@string/rewrite_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_forgot_password"
@@ -46,14 +61,17 @@
             android:text="@string/forgot_password"
             android:textSize="15sp"
             android:textStyle="italic"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_password" />
+            app:layout_constraintTop_toBottomOf="@id/et_re_password" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/bg_button_login"
             android:fontFamily="@font/reem_kufiink_regular"
             android:text="@string/sign_up"

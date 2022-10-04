@@ -1,33 +1,58 @@
 package com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting
 
 import android.content.Intent
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.databinding.FragmentSettingBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingAdapter
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionHandle
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctions
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingItems
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingFragment : BaseFragment<FragmentSettingBinding>() {
+class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionHandle {
+
+    @Inject
+    lateinit var settingAdapter: SettingAdapter
+
     override fun getLayoutId(): Int = R.layout.fragment_setting
 
     override fun initData() {
+        createDataAdapter()
+    }
 
+    private fun createDataAdapter() {
+        val settingFunction = listOf(
+            SettingItems(
+                SettingFunctions.USER_INFO,
+                getString(R.string.account),
+                R.drawable.ic_accounts
+            ),
+            SettingItems(
+                SettingFunctions.LOCK_PATTERN,
+                getString(R.string.lock_setting),
+                R.drawable.ic_lock_setting
+            ),
+            SettingItems(
+                SettingFunctions.LOG_OUT,
+                getString(R.string.log_out),
+                R.drawable.ic_logout
+            )
+        )
+        settingAdapter.settingFunctionHandle = this
+        settingAdapter.submitList(settingFunction)
     }
 
     override fun initYourView() {
-        mBinding.btnLogout.setOnClickListener {
-            Firebase.auth.signOut()
-            Firebase.auth.addAuthStateListener {
-                if (it.currentUser == null) {
-                    val intent = Intent(context, LogInActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    mActivityCallback.startActivityFromFragment(intent)
-                }
-            }
-        }
+        mBinding.rcvSetting.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        mBinding.rcvSetting.adapter = settingAdapter
     }
 
     override fun initListener() {
@@ -36,5 +61,23 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
     override fun initObserver() {
 
+    }
+
+    override fun handleSetting(item: SettingItems) {
+        when (item.function) {
+            SettingFunctions.USER_INFO -> TODO()
+            SettingFunctions.LOCK_PATTERN -> TODO()
+            SettingFunctions.LOG_OUT -> {
+                Firebase.auth.signOut()
+                Firebase.auth.addAuthStateListener {
+                    if (Firebase.auth.currentUser == null) {
+                        val intent = Intent(context, LogInActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        mActivityCallback.startActivityFromFragment(intent)
+                    }
+                }
+            }
+        }
     }
 }

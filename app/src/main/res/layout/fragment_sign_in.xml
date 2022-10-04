@@ -31,6 +31,7 @@
             android:background="@drawable/bg_login_edittext"
             android:fontFamily="@font/reem_kufiink_regular"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="17sp"

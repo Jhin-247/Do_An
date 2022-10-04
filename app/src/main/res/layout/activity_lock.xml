@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +13,7 @@
             android:id="@+id/tv_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/reem_kufiink_regular"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="@color/white"

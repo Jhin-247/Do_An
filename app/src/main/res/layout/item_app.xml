@@ -9,15 +9,14 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_app_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/black"
             app:shapeAppearanceOverlay="@style/corner_radius" />
 
 
@@ -34,6 +33,7 @@
                 android:id="@+id/tv_icon_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/reem_kufiink_regular"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -47,6 +47,7 @@
                 android:maxLines="1"
                 android:textColor="#80000000"
                 android:textSize="16sp"
+                android:visibility="gone"
                 tools:text="Recommend to lock" />
         </LinearLayout>
 

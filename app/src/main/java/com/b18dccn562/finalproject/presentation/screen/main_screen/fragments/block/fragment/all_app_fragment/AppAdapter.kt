@@ -29,7 +29,8 @@ class AppAdapter @Inject constructor() : BaseAdapter<AppInfo, ItemAppBinding>() 
         Glide.with(binding.ivAppIcon).load(item.mAppIcon).error(R.drawable.ic_default_app_icon)
             .into(binding.ivAppIcon)
         binding.tvIconName.text = item.mAppName
-        binding.tvRecommend.text = binding.tvRecommend.context.getString(R.string.recommend_lock)
+//        binding.tvRecommend.text = binding.tvRecommend.context.getString(R.string.recommend_lock)
+        binding.tvRecommend.text = item.mUsedDuration.toString()
     }
 
 

@@ -1,22 +1,24 @@
 package com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting
 
 import android.content.Intent
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.databinding.FragmentSettingBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingAdapter
-import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionsImplement
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctions
+import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionsImplement
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingItems
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionsImplement {
+
+    private val mSettingViewModel by activityViewModels<SettingViewModel>()
 
     @Inject
     lateinit var settingAdapter: SettingAdapter
@@ -68,8 +70,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctions
             SettingFunctions.USER_INFO -> TODO()
             SettingFunctions.LOCK_PATTERN -> TODO()
             SettingFunctions.LOG_OUT -> {
-                Firebase.auth.signOut()
-                Firebase.auth.addAuthStateListener {
+                val authStateListener = AuthStateListener {
                     if (it.currentUser == null) {
                         val intent = Intent(context, LogInActivity::class.java)
                         intent.flags =
@@ -77,6 +78,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctions
                         mActivityCallback.startActivityFromFragment(intent)
                     }
                 }
+                mSettingViewModel.signOut(authStateListener)
             }
         }
     }

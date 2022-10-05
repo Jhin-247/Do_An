@@ -1,5 +1,7 @@
 package com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.block.fragment.all_app_fragment
 
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,20 +32,38 @@ class AllAppsFragment : BaseFragment<FragmentAllAppBinding>() {
     }
 
     override fun initListener() {
+        mBinding.etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val keySearch = mBinding.etSearch.text.toString()
+                mMainViewModel.search(keySearch)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
     }
 
     override fun initObserver() {
-        mMainViewModel.allAppList.observe(this) {
+        mMainViewModel.listAppToShow.observe(this) {
             adapter.submitList(it)
         }
         mMainViewModel.isInitializedData.observe(this) {
             when (it) {
                 InitializeState.NOT_INITIALIZED -> {}
                 InitializeState.IS_INITIALIZING -> {
-                    showLoadingDialog(false)
+                    loadingDialog?.showDialog(childFragmentManager, false)
+//                    showLoadingDialog(false)
                 }
                 InitializeState.INITIALIZED -> {
-                    hideLoadingDialog()
+                    if (loadingDialog?.isVisible!!) {
+                        loadingDialog?.dismiss()
+                    }
                 }
                 null -> {
 

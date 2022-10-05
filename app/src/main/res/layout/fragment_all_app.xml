@@ -6,8 +6,8 @@
         android:layout_height="match_parent"
         android:layout_margin="7dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_search"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_search_text_view"
@@ -22,7 +22,7 @@
             android:id="@+id/rcv_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_search"
+            android:layout_below="@id/et_search"
             android:layout_margin="7dp" />
 
     </RelativeLayout>

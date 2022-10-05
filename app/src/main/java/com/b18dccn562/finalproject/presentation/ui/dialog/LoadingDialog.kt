@@ -10,7 +10,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.b18dccn562.finalproject.databinding.DialogLoadingBinding
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class LoadingDialog @Inject constructor(
 ) : DialogFragment() {
 
@@ -31,7 +33,6 @@ class LoadingDialog @Inject constructor(
 
     override fun dismiss() {
         super.dismiss()
-        dialog?.setCancelable(true)
     }
 
 }

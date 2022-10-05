@@ -9,14 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.b18dccn562.finalproject.presentation.ui.dialog.LoadingDialog
-import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     lateinit var mBinding: VB
     protected lateinit var mActivityCallback: ActivityCallback
 
-    @Inject
-    lateinit var loadingDialog: LoadingDialog
+    protected var loadingDialog: LoadingDialog? = LoadingDialog()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -58,14 +56,19 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     fun removeObserver() {}
 
     protected fun showLoadingDialog(cancelable: Boolean) {
-        if (!loadingDialog.isVisible) {
-            loadingDialog.showDialog(childFragmentManager, cancelable)
+        if (this.loadingDialog!!.isVisible) {
+            loadingDialog?.showDialog(childFragmentManager, cancelable)
         }
     }
 
+    protected fun createSave() {
+        loadingDialog = null
+    }
+
     protected fun hideLoadingDialog() {
-        if (loadingDialog.isVisible) {
-            loadingDialog.dismiss()
+        if (loadingDialog?.isVisible == true) {
+            loadingDialog?.dismiss()
         }
     }
+
 }

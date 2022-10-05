@@ -16,19 +16,13 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private var appRepository: AppRepository
 ) : ViewModel() {
-
+    private val _hasPermission = MutableLiveData(false)
+    val hasPermission: LiveData<Boolean> = _hasPermission
     private val _allAppList = MutableLiveData<List<AppInfo>>()
     val allAppList: LiveData<List<AppInfo>> = _allAppList
 
-    private val hasPermission = MutableLiveData(false)
     private val _isInitializedData = MutableLiveData(InitializeState.NOT_INITIALIZED)
     val isInitializedData: LiveData<InitializeState> = _isInitializedData
-
-    fun setHasPermissionStatus(status: Boolean) {
-        hasPermission.value = status
-    }
-
-    fun getHasPermissionStatus(): LiveData<Boolean> = hasPermission
 
     fun loadData() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -42,6 +36,11 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+    fun setHasPermissionStatus(status: Boolean) {
+        _hasPermission.value = status
+    }
+
+
 
 
 }

@@ -1,7 +1,6 @@
 package com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.block.fragment.all_app_fragment
 
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.b18dccn562.finalproject.R
@@ -9,14 +8,12 @@ import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.databinding.FragmentAllAppBinding
 import com.b18dccn562.finalproject.presentation.screen.main_screen.InitializeState
 import com.b18dccn562.finalproject.presentation.screen.main_screen.MainViewModel
-import com.b18dccn562.finalproject.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class AllAppsFragment : BaseFragment<FragmentAllAppBinding>() {
 
-    private val mViewModel by viewModels<AllAppViewModel>()
     private val mMainViewModel by activityViewModels<MainViewModel>()
 
     @Inject
@@ -36,9 +33,6 @@ class AllAppsFragment : BaseFragment<FragmentAllAppBinding>() {
     }
 
     override fun initObserver() {
-        mViewModel.getSearchingStatus().observe(this) {
-
-        }
         mMainViewModel.allAppList.observe(this) {
             adapter.submitList(it)
         }

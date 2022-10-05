@@ -70,7 +70,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun setupObserver() {
-        mViewModel.getHasPermissionStatus().observe(this) {
+        mViewModel.hasPermission.observe(this) {
             if (it) {
                 mViewModel.loadData()
                 setupNavigation()

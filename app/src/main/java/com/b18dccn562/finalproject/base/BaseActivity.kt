@@ -12,15 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
-import com.b18dccn562.finalproject.presentation.ui.dialog.LoadingDialog
-import javax.inject.Inject
 
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), ActivityCallback {
     protected lateinit var mBinding: VB
-
-    @Inject
-    lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -87,18 +82,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), Activit
             )
         }
         return mode == AppOpsManager.MODE_ALLOWED
-    }
-
-    private fun showLoadingDialog(cancelable: Boolean) {
-        if (!loadingDialog.isVisible) {
-            loadingDialog.showDialog(supportFragmentManager, cancelable)
-        }
-    }
-
-    private fun hideLoadingDialog() {
-        if (loadingDialog.isVisible) {
-            loadingDialog.dismiss()
-        }
     }
 
     private fun requestUsageStatPermission() {

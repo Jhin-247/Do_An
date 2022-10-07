@@ -43,6 +43,14 @@
 
     <string name="setting">Cài đặt</string>
     <string name="unmatch_password">Mật khẩu không khớp</string>
+    <string name="role_ask">Bạn là ai?</string>
+    <string name="empty_image">No image picked</string>
+
+    <string-array name="roles">
+        <item>Cha mẹ</item>
+        <item>Con</item>
+        <item>Người dùng</item>
+    </string-array>
 
 
 </resources>

@@ -8,7 +8,6 @@ import com.b18dccn562.finalproject.base.BaseActivity
 import com.b18dccn562.finalproject.common.Constants
 import com.b18dccn562.finalproject.databinding.ActivityLockBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
-import com.b18dccn562.finalproject.presentation.screen.main_screen.MainActivity
 import com.b18dccn562.finalproject.presentation.ui.lock_view.LockView
 import com.b18dccn562.finalproject.utils.PatternUtil
 import dagger.hilt.android.AndroidEntryPoint

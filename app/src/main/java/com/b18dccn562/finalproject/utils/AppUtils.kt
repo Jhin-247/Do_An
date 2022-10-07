@@ -144,10 +144,6 @@ class AppUtils @Inject constructor(
         val i = Intent(Intent.ACTION_MAIN)
         i.addCategory(Intent.CATEGORY_LAUNCHER)
         val lst: List<ResolveInfo> = packageManager.queryIntentActivities(i, 0)
-        LogUtils.d("${lst.size}")
-        for (resolveInfo in lst) {
-            Log.d("Test", "New Launcher Found: " + resolveInfo.activityInfo.packageName)
-        }
         val result: MutableList<AppInfo> = ArrayList()
         for (resolveInfo in lst) {
             result.add(convertResolveInfo(resolveInfo))

@@ -5,12 +5,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseFragment
+import com.b18dccn562.finalproject.common.Resource
 import com.b18dccn562.finalproject.databinding.FragmentSettingBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingAdapter
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctions
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionsImplement
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingItems
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,6 +29,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctions
 
     override fun initData() {
         createDataAdapter()
+        mSettingViewModel.loadAndObserveUser()
     }
 
     private fun createDataAdapter() {
@@ -62,7 +65,15 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctions
     }
 
     override fun initObserver() {
-
+        mSettingViewModel.userImage.observe(this) {
+            when (it) {
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    Glide.with(this).load(it.data).into(mBinding.ivUserAvatar)
+                }
+            }
+        }
     }
 
     override fun handleSetting(item: SettingItems) {

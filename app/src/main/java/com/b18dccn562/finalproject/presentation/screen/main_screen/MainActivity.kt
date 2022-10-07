@@ -42,12 +42,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initYourView() {
         hideSupportActionBar()
         setStatusBarColor(R.color.main_color)
-    }
-
-    private fun setupNavigation() {
         mNavHostFragment.let {
             NavigationUI.setupWithNavController(mBinding.bottomNavigation, mNavController!!)
         }
+    }
+
+    private fun setupLoggedInUserFragment() {
         mBinding.bottomNavigation.itemIconTintList = null
         setNavHostFragment(R.navigation.main_nav_graph)
         setBottomMenuItem(R.menu.main_menu)
@@ -73,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         mViewModel.hasPermission.observe(this) {
             if (it) {
                 mViewModel.loadData()
-                setupNavigation()
+                setupLoggedInUserFragment()
             } else {
                 setupBlankFragment()
             }
@@ -82,14 +82,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     override fun setupListener() {
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (mViewModel.isInitializedData.equals(InitializeState.INITIALIZED)) {
-            if (checkUsageStatPermission()) {
-                mViewModel.setHasPermissionStatus(true)
-            }
-        }
     }
 }

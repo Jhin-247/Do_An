@@ -26,10 +26,14 @@ class LogInActivity : BaseActivity<ActivityLogInBinding>() {
     }
 
     override fun initData() {
-        if (Firebase.auth.currentUser != null) {
+        if (Firebase.auth.currentUser != null ) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+    }
+
+    private fun haveInfo(): Unit {
+
     }
 
     override fun initYourView() {

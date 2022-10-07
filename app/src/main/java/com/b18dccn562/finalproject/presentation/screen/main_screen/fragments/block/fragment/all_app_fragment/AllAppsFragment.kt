@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.b18dccn562.finalproject.R
 import com.b18dccn562.finalproject.base.BaseFragment
+import com.b18dccn562.finalproject.common.Resource
 import com.b18dccn562.finalproject.databinding.FragmentAllAppBinding
-import com.b18dccn562.finalproject.presentation.screen.main_screen.InitializeState
 import com.b18dccn562.finalproject.presentation.screen.main_screen.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,17 +50,16 @@ class AllAppsFragment : BaseFragment<FragmentAllAppBinding>() {
     }
 
     override fun initObserver() {
-        mMainViewModel.listAppToShow.observe(this) {
+        mMainViewModel.listAppToShow.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        mMainViewModel.isInitializedData.observe(this) {
+        mMainViewModel.isInitializedData.observe(viewLifecycleOwner) {
             when (it) {
-                InitializeState.NOT_INITIALIZED -> {}
-                InitializeState.IS_INITIALIZING -> {
+                is Resource.Error -> {}
+                is Resource.Loading -> {
                     loadingDialog?.showDialog(childFragmentManager, false)
-//                    showLoadingDialog(false)
                 }
-                InitializeState.INITIALIZED -> {
+                is Resource.Success -> {
                     if (loadingDialog?.isVisible!!) {
                         loadingDialog?.dismiss()
                     }

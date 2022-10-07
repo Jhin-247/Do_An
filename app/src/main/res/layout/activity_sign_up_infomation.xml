@@ -42,6 +42,7 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
                 app:shapeAppearanceOverlay="@style/corner_radius"
                 app:srcCompat="@drawable/ic_user" />
@@ -223,6 +224,23 @@
                     </RadioGroup>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:fontFamily="@font/reem_kufiink_regular"
+                    android:text="@string/role_ask"
+                    android:textColor="#99000000" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_role_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:entries="@array/roles"
+                    android:fontFamily="@font/reem_kufiink_regular"
+                    android:textColor="#99000000" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

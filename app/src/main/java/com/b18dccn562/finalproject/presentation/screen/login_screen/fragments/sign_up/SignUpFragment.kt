@@ -10,7 +10,6 @@ import com.b18dccn562.finalproject.databinding.FragmentSignUpBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.fragments.LoginViewModel
 import com.b18dccn562.finalproject.presentation.screen.sign_up_info_screen.SignUpInformationActivity
 import com.b18dccn562.finalproject.utils.KeyBoardUtils
-import com.b18dccn562.finalproject.utils.UserHelper
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,8 +21,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     @Inject
     lateinit var keyBoardUtils: KeyBoardUtils
 
-    @Inject
-    lateinit var userHelper: UserHelper
 
     override fun getLayoutId(): Int = R.layout.fragment_sign_up
 
@@ -36,14 +33,14 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
 
     override fun initListener() {
         mBinding.btnSignUp.setOnClickListener {
-            val username = mBinding.etUsername.text
-            val password = mBinding.etPassword.text
-            val rePassword = mBinding.etRePassword.text
-            if (username == null || username.isEmpty()) {
+            val username = mBinding.etUsername.text.toString()
+            val password = mBinding.etPassword.text.toString()
+            val rePassword = mBinding.etRePassword.text.toString()
+            if (username.isEmpty()) {
                 Toast
                     .makeText(context, getString(R.string.missing_username), Toast.LENGTH_SHORT)
                     .show()
-            } else if (password == null || password.isEmpty() || rePassword == null || rePassword.isEmpty()) {
+            } else if (password.isEmpty() || rePassword.isEmpty()) {
                 Toast
                     .makeText(context, getString(R.string.missing_password), Toast.LENGTH_SHORT)
                     .show()
@@ -60,7 +57,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     }
 
     override fun initObserver() {
-        mSignUpViewModel.loginState.observe(this) { it ->
+        mSignUpViewModel.loginState.observe(viewLifecycleOwner) { it ->
             when (it) {
                 is Resource.Error -> {
                     it.exception?.let {

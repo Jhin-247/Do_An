@@ -20,7 +20,7 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>() {
 
     override fun initListener() {
         mBinding.btnRequestPermission.setOnClickListener {
-            mActivityCallback.requestPermission()
+            mActivityCallback.requestUsageStatPermission()
         }
     }
 

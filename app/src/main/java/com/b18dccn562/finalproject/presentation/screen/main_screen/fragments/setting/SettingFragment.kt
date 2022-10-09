@@ -8,6 +8,7 @@ import com.b18dccn562.finalproject.base.BaseFragment
 import com.b18dccn562.finalproject.common.Resource
 import com.b18dccn562.finalproject.databinding.FragmentSettingBinding
 import com.b18dccn562.finalproject.presentation.screen.login_screen.LogInActivity
+import com.b18dccn562.finalproject.presentation.screen.main_screen.MainViewModel
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingAdapter
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctions
 import com.b18dccn562.finalproject.presentation.screen.main_screen.fragments.setting.adapter.SettingFunctionsImplement
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctionsImplement {
 
     private val mSettingViewModel by activityViewModels<SettingViewModel>()
+    private val mMainViewModel by activityViewModels<MainViewModel>()
 
     @Inject
     lateinit var settingAdapter: SettingAdapter
@@ -65,7 +67,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(), SettingFunctions
     }
 
     override fun initObserver() {
-        mSettingViewModel.userImage.observe(this) {
+        mMainViewModel.userImage.observe(this) {
             when (it) {
                 is Resource.Error -> {}
                 is Resource.Loading -> {}

@@ -28,29 +28,6 @@ class SettingViewModel @Inject constructor(
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 
-    private val _userImage = MutableLiveData<Resource<Bitmap?>>()
-    val userImage: LiveData<Resource<Bitmap?>> = _userImage
-
-    private val loadImageSuccessListener = OnSuccessListener<ByteArray> {
-        val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
-        _userImage.value = Resource.Success(bitmap)
-    }
-
-    private val loadImageFailureListener = OnFailureListener {
-        _userImage.value = Resource.Error(exception = it)
-    }
-
-    private val userInformationListener = object : ValueEventListener {
-        override fun onDataChange(dataSnapshot: DataSnapshot) {
-            viewModelScope.launch {
-                firebaseRepository.getUserImage(loadImageSuccessListener, loadImageFailureListener)
-            }
-        }
-
-        override fun onCancelled(databaseError: DatabaseError) {
-        }
-    }
-
     fun signOut(authStateListener: AuthStateListener) {
         CoroutineScope(Dispatchers.IO).launch {
             firebaseRepository.logOut(authStateListener)
